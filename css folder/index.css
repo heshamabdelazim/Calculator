@@ -1,0 +1,202 @@
+/* default */
+*{
+    box-sizing: border-box;
+}
+.text-center{
+    text-align: center;
+}
+
+/* calculator-background */
+.calculator{
+    background: linear-gradient( transparent, #e4ad2c85, transparent);
+    padding: 100px 0;
+    position: relative;
+}
+/* calculator-container-parent */
+.calculator-parent{
+    background-color: #ffffdc;
+    max-width: 400px;
+    margin: auto;
+    border-radius: 10px;
+    border: 5px dashed transparent;
+    background: linear-gradient(transparent , transparent)padding-box, linear-gradient(gray, #f2b649)border-box;
+}
+.calculator-parent .parent-top,
+.calculator-parent .parent-bottom{
+    padding: 15px;
+    border-radius: 10px;
+}
+.calculator-parent .parent-top{
+    padding-bottom:0;
+    background-color: #f0ab59;
+    border-bottom: 6px solid #434343;
+}
+.calculator-parent .parent-bottom{
+    height: 450px;
+    background-color: gray;
+}
+.calculator-parent .head{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    justify-content: flex-start;
+}
+.calculator-parent .head [type="checkbox"]{
+    display: none;
+}
+.calculator-parent .head [type="checkbox"] + label{
+    background-color: gray;
+    width: 75px;
+    height: 30px;
+    display: inline-block;
+    border-radius: 35px;
+    position: relative;
+    transition: 1s;
+    cursor: pointer;
+}
+.calculator-parent .head [type="checkbox"]:checked + label{
+    background-color: white;
+}
+.calculator-parent .head [type="checkbox"] + label::before{
+    content: "";
+    position: absolute;
+    background-color: #f0ab59;
+    width: 30%;
+    height: 22px;
+    top: 50%;
+    left: 5%;
+    transform: translatey(-50%);
+    border-radius: 50%;
+    transition: 1s;
+}
+.calculator-parent .head [type="checkbox"]:checked + label::before{
+    left: 95%;
+    transform: translate(-100%, -50%);
+}
+.calculator-parent .head [type="checkbox"] + label + label{
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.calculator-parent .head [type="checkbox"]:checked + label:hover + label{
+    color: black;
+}
+.calculator-parent .head [type="checkbox"] + label + label:hover,
+.calculator-parent .head [type="checkbox"] + label:hover + label,
+.calculator-parent .head [type="checkbox"]:checked + label + label{
+    color: white;
+}
+.calculator-parent .output-parent{
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    letter-spacing: 4px;
+}
+.calculator-parent .output-parent .calc{
+    font-size: 20px;
+    color: #787878;
+    font-weight: bold;
+    position: relative;
+}
+.calculator-parent .output-parent .calc::before{
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 23px;
+    background-color: white;
+    bottom: 0;
+    left: -4px;
+    animation: under_score 5.05s infinite linear alternate;
+}
+.calculator-parent .output-parent .output-text{
+    font-size: 50px;
+    overflow: hidden;
+}
+.calculator-parent .tools{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    padding: 0 15px;
+}
+.calculator-parent .parent-bottom .tools div:first-child{
+    display: flex;
+    gap: 40px;
+}
+.calculator-parent .parent-bottom .tools i{
+    color: #f0ab59;
+    cursor: pointer;
+}
+.calculator-parent .buttons{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    height: 100%;
+    gap: 10px;
+    padding: 18px 0px;
+    grid-template-areas: "ac ac dev mult" "sev eig nin min" "fou fiv six plu" "one two thr plu" "dot zer equ equ";
+}
+.calculator-parent .buttons div{
+    background-color: #f0ab59;
+    border-radius: 15px;
+    border-bottom: 4px solid black;
+    font-size: 20px;
+    display: flex;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.6s;
+}
+.calculator-parent .buttons div.plu,
+.calculator-parent .buttons div.ac,
+.calculator-parent .buttons div.equ,
+.calculator-parent .buttons div.dev,
+.calculator-parent .buttons div.mult,
+.calculator-parent .buttons div.min{
+    font-size: 33px;
+    background-color: burlywood;
+    text-transform: uppercase;
+}
+.calculator-parent .buttons div.ac{
+    grid-area: ac;
+}
+.calculator-parent .buttons div.plu{
+    grid-area: plu;
+}
+.calculator-parent .buttons div.equ{
+    grid-area: equ;
+}
+.calculator-parent .buttons div.dev{
+    grid-area: dev;
+}
+.calculator-parent .buttons div.mult{
+    grid-area: mult;
+}
+.calculator-parent .buttons div.min{
+    grid-area: min;
+}
+
+.calculator-parent .buttons div:hover,
+.calculator-parent .parent-bottom .tools i:hover{
+    color: white;
+    transition: 0.6s;
+}
+
+/* animation */
+@keyframes bottomDownAndUp {
+    50%{
+        transform: translateY(4px);
+        border-bottom: 1px solid black; 
+    }
+}
+@keyframes under_score {
+    10%, 30%, 50%, 70%, 90% {
+        opacity: 0;
+    }
+    20%, 40%, 60%, 80%, 100% {
+        opacity: 1;
+    }
+}
