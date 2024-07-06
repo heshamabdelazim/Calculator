@@ -9,8 +9,8 @@
 .container{
     padding-left: 15px;
     padding-right: 15px;
-    margin-left: auto;
-    margin-right: auto;
+
+    width: 100%;
 }
 @media (min-width:768px){
     .container{
@@ -31,7 +31,11 @@
 /* calculator-background */
 .calculator{
     background: linear-gradient( transparent, #e4ad2c85, transparent);
-    padding: 100px 0;
+    /* padding: 100px 0; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: relative;
 }
 /* calculator-container-parent */
