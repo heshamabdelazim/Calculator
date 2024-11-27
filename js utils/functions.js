@@ -14,7 +14,7 @@ export const calculatorBottons = document.querySelectorAll(
     .children[0],
   outputResult = document.querySelector(".calculator-parent .output-parent")
     .children[1];
-console.log(outputResult);
+
 // =======
 outputEquation.innerHTML = "Welcome";
 // =======
@@ -78,8 +78,6 @@ export function dot_is_clicked(btn) {
 // ==================
 
 export function digit_is_clicked(btn) {
-  console.log(is_it_firstTime(), "this is first Number");
-  console.log("digit is clicked");
   outputEquation.innerHTML = is_it_firstTime() ? "" : outputEquation.innerHTML;
   outputEquation.innerHTML += btn.innerHTML;
 }
@@ -94,8 +92,6 @@ export function special_is_clicked(btn) {
   - When the user press + here we need to (reset the dot) every sign to be like (10.3 + 10.5 + 0.6) 
   */
   // (dot will never be here) although it is special
-  const outputEquArray = outputEquation.innerHTML.split("");
-  const isLastSign = /\D/.test(outputEquArray[outputEquArray.length - 1]);
   const isItPlusOrMinus = /[+-]/.test(btn.innerHTML);
   const inputsArr = outputEquation.innerHTML.match(/\d+(\.\d+)?/g); // this pattern of (20.52 or 30)
   const isTwoInputs = inputsArr.length == 2; //this maybe ["20.5", "30"] or ["20.5"]
@@ -103,7 +99,7 @@ export function special_is_clicked(btn) {
   isDotEntered = false;
   if (is_it_firstTime() && isItPlusOrMinus) {
     outputEquation.innerHTML = btn.innerHTML;
-  } else if (!is_it_firstTime() && !isLastSign) {
+  } else if (!is_it_firstTime() && !is_sign_at_last()) {
     //is it like 20.5("+" pressed)
     if (isTwoInputs) {
       equal_is_clicked();
@@ -143,10 +139,20 @@ export function calc_output(x, y, sign) {
 }
 
 export function equal_is_clicked() {
-  const inputsArr = outputEquation.innerHTML.match(/\d+(\.\d+)?/g); // this pattern of (20.52 or 30)
-  const specialSign = outputEquation.innerHTML.match(/[\+\-\/\*]/g)[0]; //this will return "+" "-" "*" "/"
+  if (!is_sign_at_last()) {
+    const inputsArr = outputEquation.innerHTML.match(/\d+(\.\d+)?/g); // this pattern of (20.52 or 30)
+    const specialSign = outputEquation.innerHTML.match(/[\+\-\/\*]/g)[0]; //this will return "+" "-" "*" "/"
+    outputResult.innerHTML = calc_output(
+      inputsArr[0],
+      inputsArr[1],
+      specialSign
+    );
+  }
+}
 
-  outputResult.innerHTML = calc_output(inputsArr[0], inputsArr[1], specialSign);
+function is_sign_at_last() {
+  const outputEquArray = outputEquation.innerHTML.split("");
+  return /\D/.test(outputEquArray[outputEquArray.length - 1]);
 }
 
 function is_it_firstTime() {
