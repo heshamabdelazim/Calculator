@@ -124,6 +124,7 @@
     color: #787878;
     font-weight: bold;
     position: relative;
+    min-height: 23px;
 }
 .calculator-parent .output-parent .calc::before{
     content: "";
@@ -176,32 +177,32 @@
     cursor: pointer;
     transition: 0.6s;
 }
-.calculator-parent .buttons div.plu,
-.calculator-parent .buttons div.ac,
-.calculator-parent .buttons div.equ,
-.calculator-parent .buttons div.dev,
-.calculator-parent .buttons div.mult,
-.calculator-parent .buttons div.min{
+.calculator-parent .buttons div#plus,
+.calculator-parent .buttons div#ac,
+.calculator-parent .buttons div#equal,
+.calculator-parent .buttons div#devide,
+.calculator-parent .buttons div#multiply,
+.calculator-parent .buttons div#minus{
     font-size: 33px;
     background-color: burlywood;
     text-transform: uppercase;
 }
-.calculator-parent .buttons div.ac{
+.calculator-parent .buttons div#ac{
     grid-area: ac;
 }
-.calculator-parent .buttons div.plu{
+.calculator-parent .buttons div#plus{
     grid-area: plu;
 }
-.calculator-parent .buttons div.equ{
+.calculator-parent .buttons div#equal{
     grid-area: equ;
 }
-.calculator-parent .buttons div.dev{
+.calculator-parent .buttons div#devide{
     grid-area: dev;
 }
-.calculator-parent .buttons div.mult{
+.calculator-parent .buttons div#multiply{
     grid-area: mult;
 }
-.calculator-parent .buttons div.min{
+.calculator-parent .buttons div#minus{
     grid-area: min;
 }
 
@@ -212,26 +213,26 @@
 }
 
 /* footer */
-.footer{
+footer{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.footer p, .footer h3{
+footer p, footer h3{
     margin: 0;
 }
-.footer .left{
+footer .left{
     padding: 1rem;
     text-align: center;
 }
-.footer .right{
+footer .right{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
     padding: 1rem;
 }
-.footer .right a{
+footer .right a{
     font-size: 1.6rem;
     color: #d67400;
 }
