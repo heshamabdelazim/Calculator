@@ -19,9 +19,7 @@ export const calculatorBottons = document.querySelectorAll(
 outputEquation.innerHTML = "Welcome";
 // =======
 //booleans
-let isDotEntered = false,
-  beginDot = true;
-
+let isDotEntered = false;
 // ==================
 export function darkAndLight(
   parentBackground,
@@ -92,15 +90,15 @@ export function special_is_clicked(btn) {
   - When the user press + here we need to (reset the dot) every sign to be like (10.3 + 10.5 + 0.6) 
   */
   // (dot will never be here) although it is special
-  const isItPlusOrMinus = /[+-]/.test(btn.innerHTML);
-  const inputsArr = outputEquation.innerHTML.match(/\d+(\.\d+)?/g); // this pattern of (20.52 or 30)
+  const isItPlusOrMinus = /[\+\-]/.test(btn.innerHTML);
+  const inputsArr = outputEquation.innerHTML.match(/\d+(\.\d+)?/g) || false; // this pattern of (20.52 or 30)
   const isTwoInputs = inputsArr.length == 2; //this maybe ["20.5", "30"] or ["20.5"]
   // --
   isDotEntered = false;
   if (is_it_firstTime() && isItPlusOrMinus) {
     outputEquation.innerHTML = btn.innerHTML;
   } else if (!is_it_firstTime() && !is_sign_at_last()) {
-    //is it like 20.5("+" pressed)
+    //is it like (20.5+) so you can't make it (20.5+*-/)
     if (isTwoInputs) {
       equal_is_clicked();
       outputEquation.innerHTML = outputResult.innerHTML;

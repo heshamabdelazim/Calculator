@@ -2,31 +2,16 @@ import {
   calculatorBottons,
   dark_lightInput,
   darkAndLight,
-  outputEquation,
-  calculatorLabel,
   dot_is_clicked,
   special_is_clicked,
   resetting,
-  calc_output,
   clickAnimation,
   digit_is_clicked,
   equal_is_clicked,
 } from "./functions.js";
-const isFirstNumber = outputEquation.innerHTML.toLowerCase() == "welcome";
-// let calculatorHead = document.querySelector(".calculator-parent .head");
 
-const calculatorParentBottom = document.querySelector(
-  ".calculator-parent .parent-bottom"
-);
 const specialPattern = /[\*\-\/\+]/; // / [*/-+] /g
 const digitPattern = /\d+/; //5465897896413521
-// console.log(calculatorParentBottom);
-
-let result = 0; //it's equal arrayResult[0] and shown to the user
-
-let interactions = 0;
-
-// some validations
 
 dark_lightInput.addEventListener("change", (event) => {
   // dark and light mode
@@ -55,8 +40,6 @@ dark_lightInput.addEventListener("change", (event) => {
 
 calculatorBottons.forEach((btn) => {
   // every btn will ..
-  // addClassNumber(btn); //all numbers will have class number
-
   btn.addEventListener("click", (event) => {
     clickAnimation(btn); // UI animation after press btns
     /*
